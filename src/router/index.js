@@ -38,7 +38,7 @@ const routes = [
 const router = createRouter({
   history:
     process.env.NODE_ENV === 'production'
-      ? createWebHashHistory('/vue3-element-admin/')
+      ? createWebHashHistory('./')
       : createWebHistory('/'),
   routes,
 })

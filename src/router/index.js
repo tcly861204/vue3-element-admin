@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import Layout from '@/layout/index.vue'
@@ -32,7 +32,10 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory('/'),
+  history:
+    process.env.NODE_ENV === 'production'
+      ? createWebHashHistory('./')
+      : createWebHistory('/'),
   routes,
 })
 

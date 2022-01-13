@@ -2,7 +2,7 @@ const path = require('path')
 const resolve = (dir) => path.resolve(__dirname, dir)
 const isProd = process.env.NODE_ENV === 'production'
 module.exports = {
-  publicPath: '/',
+  publicPath: isProd ? './' : '/',
   outputDir: 'dist',
   assetsDir: 'static',
   filenameHashing: false,

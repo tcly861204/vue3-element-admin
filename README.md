@@ -1,29 +1,11 @@
 # vue3-element-admin
 
-## Project setup
-```
-npm install
-```
+## 安装
+> npm install
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## 运行
+> npm run dev
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## 打包
+> npm run build
 
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

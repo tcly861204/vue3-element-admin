@@ -1,26 +1,48 @@
-import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
-
+import { createRouter, createWebHistory } from 'vue-router'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+import Layout from '@/layout/index.vue'
+NProgress.inc(0.2)
+NProgress.configure({
+  easing: 'ease',
+  speed: 500,
+  showSpinner: false,
+})
 const routes = [
   {
-    path: "/",
-    name: "Home",
-    component: Home,
+    path: '/',
+    name: 'layout',
+    component: Layout,
+    redirect: '/',
+    children: [
+      {
+        path: '/',
+        name: 'home',
+        component: () => import('@/views/home/index.vue'),
+      },
+    ],
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    path: '/login',
+    meta: {
+      requireAuth: true,
+    },
+    component: () => import('@/views/login/index.vue'),
   },
-];
+]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory('/'),
   routes,
-});
+})
 
-export default router;
+router.beforeEach(() => {
+  NProgress.start()
+  return true
+})
+
+router.afterEach(() => {
+  NProgress.done()
+})
+
+export default router

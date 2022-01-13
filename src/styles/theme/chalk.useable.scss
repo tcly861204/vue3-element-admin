@@ -1,0 +1,12 @@
+@import './theme.variable.scss';
+.theme-main-color {
+  color: $chalk-main-color !important;
+}
+
+.theme-main-bgColor {
+  background: $chalk-main-color !important;
+}
+
+.theme-main-borderColor {
+  border-color: $chalk-main-color !important;
+}

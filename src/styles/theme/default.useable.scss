@@ -1,0 +1,12 @@
+@import './theme.variable.scss';
+.theme-main-color {
+  color: $default-main-color !important;
+}
+
+.theme-main-bgColor {
+  background: $default-main-color !important;
+}
+
+.theme-main-borderColor {
+  border-color: $default-main-color !important;
+}

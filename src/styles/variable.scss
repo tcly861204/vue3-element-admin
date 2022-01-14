@@ -10,3 +10,7 @@ $transitionDelayFast: .1s;
 $transitionDelaySlow: .3s;
 
 $borderRadius: 2px;
+
+@mixin fontSize($Num) {
+  font-size: $Num;
+}

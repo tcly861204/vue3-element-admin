@@ -11,17 +11,9 @@
       <li class="menu-item">
         <v-icon name="theme" :size="20" color="#fff" />
       </li>
-      <li class="menu-item">
+      <li class="menu-item language">
         <v-icon name="language-zh-CN" :size="20" color="#fff" />
-        <span
-          style="
-            color: #fff;
-            font-size: 12px;
-            float: right;
-            padding: 3px 0 0 3px;
-"
-          >中文</span
-        >
+        <span class="language-text">中文</span>
       </li>
       <li class="menu-item avatar">
         <img :src="avatar" />

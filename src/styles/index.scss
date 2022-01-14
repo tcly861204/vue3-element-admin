@@ -1,2 +1,6 @@
 @import 'variable.scss';
 @import 'reset.scss';
+
+@for $i from 12 to 21 {
+  .fs#{$i} { @include fontSize(1px * $i); }
+}

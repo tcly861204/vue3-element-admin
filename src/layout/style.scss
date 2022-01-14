@@ -28,6 +28,13 @@
       margin-left: 15px;
       cursor: pointer;
     }
+    .language {
+      &-text {
+        font-size: 12px;
+        float: right;
+        padding: 3px 0 0 3px;
+      }
+    }
     .avatar {
       position: relative;
       top: -3px;

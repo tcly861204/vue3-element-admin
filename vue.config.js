@@ -5,6 +5,7 @@ const WebpackPluginBanner = require('webpack-plugin-banner')
 const AutoImport = require('unplugin-auto-import/webpack')
 const Components = require('unplugin-vue-components/webpack')
 const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
+const copyWebpackPlugin = require('copy-webpack-plugin')
 const resolve = dir => path.resolve(__dirname, dir)
 const isProd = process.env.NODE_ENV === 'production'
 module.exports = {
@@ -78,7 +79,15 @@ module.exports = {
           openAnalyzer: false,
           analyzerMode: 'static',
         }),
-        new WebpackPluginBanner()
+        new WebpackPluginBanner(),
+        new copyWebpackPlugin({
+          patterns: [
+            {
+              from: path.resolve(__dirname, 'README.md'),
+              to: path.resolve(__dirname, 'dist'),
+            },
+          ],
+        })
       )
     }
   },

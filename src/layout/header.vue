@@ -1,6 +1,6 @@
 <template>
   <header class="g-header">
-    <h2 class="g-logo">后台管理</h2>
+    <h2 class="g-logo">后台管理系统</h2>
     <div class="menu">
       <li class="menu-item">
         <v-icon name="fullscreen" :size="20" color="#fff" />
@@ -13,6 +13,15 @@
       </li>
       <li class="menu-item">
         <v-icon name="language-zh-CN" :size="20" color="#fff" />
+        <span
+          style="
+            color: #fff;
+            font-size: 12px;
+            float: right;
+            padding: 3px 0 0 3px;
+"
+          >中文</span
+        >
       </li>
       <li class="menu-item avatar">
         <img :src="avatar" />

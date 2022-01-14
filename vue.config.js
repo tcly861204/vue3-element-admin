@@ -21,7 +21,6 @@ module.exports = {
     https: false,
     hotOnly: false,
     watchOptions: {
-      // 监听中添加忽略目录
       ignored: [/node_modules/],
     },
   },

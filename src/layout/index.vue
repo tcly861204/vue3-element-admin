@@ -1,14 +1,14 @@
 <template>
-  <Header />
+  <Menu />
   <main class="g-main">
-    <Menu />
+    <Header />
+    <nav class="g-tabs">
+      <li class="g-tab-item">首页</li>
+    </nav>
     <section class="g-container">
-      <nav class="g-tabs">
-        <li class="g-tab-item">首页</li>
-      </nav>
-      <router-view style="flex: 1" />
-      <footer class="g-footer">footer</footer>
+      <router-view />
     </section>
+    <footer class="g-footer">footer</footer>
   </main>
 </template>
 <script>

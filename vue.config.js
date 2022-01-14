@@ -1,5 +1,11 @@
 const path = require('path')
-const resolve = (dir) => path.resolve(__dirname, dir)
+const CompressionWebpackPlugin = require('compression-webpack-plugin')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const WebpackPluginBanner = require('webpack-plugin-banner')
+const AutoImport = require('unplugin-auto-import/webpack')
+const Components = require('unplugin-vue-components/webpack')
+const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
+const resolve = dir => path.resolve(__dirname, dir)
 const isProd = process.env.NODE_ENV === 'production'
 module.exports = {
   publicPath: isProd ? './' : '/',
@@ -19,22 +25,22 @@ module.exports = {
       ignored: [/node_modules/],
     },
   },
-  chainWebpack: (config) => {
+  chainWebpack: config => {
     config.resolve.extensions.add('scss')
     config.resolve.alias.set('@', resolve('src'))
     // 配置主题
-    const scss = config.module.rule('scss').toConfig()
-    const useable = { ...scss.oneOf[3], test: /\.useable.scss$/ }
-    useable.use = [...useable.use]
-    useable.use[0] = {
-      loader: 'style-loader',
-      options: {
-        injectType: 'lazyStyleTag',
-      },
-    }
-    config.module.rule('scss').merge({ oneOf: [useable] })
+    const scss = config.module.rule('scss').oneOfs.store
+    scss.forEach(item => {
+      item
+        .use('sass-resources-loader')
+        .loader('sass-resources-loader')
+        .options({
+          resources: './src/styles/global.scss',
+        })
+        .end()
+    })
   },
-  configureWebpack: (config) => {
+  configureWebpack: config => {
     config.performance = {
       hints: 'warning',
       maxEntrypointSize: 50000000,
@@ -43,5 +49,39 @@ module.exports = {
         return assetFilename.endsWith('.js')
       },
     }
+    config.plugins.push(
+      AutoImport({
+        resolvers: [ElementPlusResolver()],
+      }),
+      Components({
+        resolvers: [ElementPlusResolver()],
+      })
+    )
+    if (isProd) {
+      const productionGzipExtensions = [
+        'html',
+        'js',
+        'css',
+        'ico',
+        'svg',
+        'json',
+      ]
+      config.plugins.push(
+        new CompressionWebpackPlugin({
+          filename: '[path].gz[query]',
+          algorithm: 'gzip',
+          test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
+          threshold: 10240,
+          minRatio: 0.6,
+          deleteOriginalAssets: false,
+        }),
+        new BundleAnalyzerPlugin({
+          openAnalyzer: false,
+          analyzerMode: 'static',
+        }),
+        new WebpackPluginBanner()
+      )
+    }
   },
+  parallel: require('os').cpus().length > 1,
 }

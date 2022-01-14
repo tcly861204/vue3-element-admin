@@ -2,19 +2,20 @@
   <header class="g-header">
     <h2 class="g-logo">后台管理</h2>
     <div class="menu">
-      <span class="avatar">
-        <el-avatar :size="30" :src="avatar"></el-avatar>
-      </span>
+      <span @click="handleClick">换肤</span>
     </div>
   </header>
 </template>
 <script>
-import avatar from '@/assets/avatar.jpg'
+import setTheme from '@/theme'
 export default {
   name: 'Header',
   setup() {
+    const handleClick = function () {
+      setTheme('#f00')
+    }
     return {
-      avatar,
+      handleClick,
     }
   },
 }

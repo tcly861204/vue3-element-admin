@@ -2,12 +2,27 @@
   <header class="g-header">
     <h2 class="g-logo">后台管理</h2>
     <div class="menu">
-      <span @click="handleClick">换肤</span>
+      <li class="menu-item">
+        <v-icon name="fullscreen" :size="20" color="#fff" />
+      </li>
+      <li class="menu-item">
+        <v-icon name="news" :size="20" color="#fff" />
+      </li>
+      <li class="menu-item">
+        <v-icon name="theme" :size="20" color="#fff" />
+      </li>
+      <li class="menu-item">
+        <v-icon name="language-zh-CN" :size="20" color="#fff" />
+      </li>
+      <li class="menu-item avatar">
+        <img :src="avatar" />
+      </li>
     </div>
   </header>
 </template>
 <script>
 import setTheme from '@/theme'
+import avatar from '@/assets/avatar.jpg'
 export default {
   name: 'Header',
   setup() {
@@ -15,6 +30,7 @@ export default {
       setTheme('#f00')
     }
     return {
+      avatar,
       handleClick,
     }
   },

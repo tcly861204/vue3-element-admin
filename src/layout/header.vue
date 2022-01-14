@@ -13,7 +13,7 @@
       </li>
       <li class="menu-item language">
         <v-icon name="language-zh-CN" :size="20" color="#fff" />
-        <span class="language-text">中文</span>
+        <span class="fs12 language-text">中文</span>
       </li>
       <li class="menu-item avatar">
         <img :src="avatar" />

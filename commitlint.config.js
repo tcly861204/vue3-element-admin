@@ -16,14 +16,13 @@
  * git commit -m 'feat: 增加 xxx 功能'
  * git commit -m 'bug: 修复 xxx 功能'
  */
+/* eslint-disable */
 module.exports = {
   extends: ['@commitlint/config-conventional'],
   rules: {
-    'type-enum': [
-      2,
-      'always',
-      [['upd', 'feat', 'fix', 'refactor', 'docs', 'chore', 'style', 'revert']],
-    ],
+    'type-enum': [2, 'always', [
+      'upd', 'feat', 'fix', 'refactor', 'docs', 'chore', 'style', 'revert'
+    ]],
     'type-case': [0],
     'type-empty': [0],
     'scope-empty': [0],

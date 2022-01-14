@@ -1,0 +1,17 @@
+{
+  "src/**/*.js": [
+    "eslint --ext .js"
+  ],
+  "src/**/*.scss": [
+    "stylelint --syntax scss",
+    "stylelint --fix"
+  ],
+  "src/**/*.css": [
+    "stylelint --syntax css",
+    "stylelint --fix"
+  ],
+  "src/**/*.vue": [
+    "eslint --ext .vue",
+    "stylelint --fix"
+  ]
+}
